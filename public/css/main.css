@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div.main {
+    min-height: 90vh;
+    background-image: url('../storage/asset/main-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+}
+
+.text-section, .image-section {
+    margin-top: -100px;    
+    flex: 1 1 50%;
+}
+
+.user-name {
+    font-size: 72px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    color: white;
+}
+
+.red-line {
+    height: 5px;
+    background-color: red;
+    margin-bottom: 10px;
+    border: 1px solid red;
+    width: 75%;
+}
+
+.user-desc {
+    font-size: 24px;
+    color: white;
+}
+
+.image-user {
+    margin-left: 200px;
+}
