@@ -69,10 +69,9 @@
          <!-- Description -->
          <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="desc" value="{{ __('Description') }}" />
-            <textarea id="desc" name="description" class="mt-1 block w-full form-control" placeholder="Description" rows="3" wire:model.defer="state.description">
-                {{Auth::user()->description}}
-            </textarea>
-            <x-jet-input-error for="desc" class="mt-2" />
+            <textarea id="desc" name="description" class="mt-1 block w-full form-control" placeholder="Description" rows="3"></textarea>
+            {{-- <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" /> --}}
+            <x-jet-input-error for="email" class="mt-2" />
         </div>
     </x-slot>
 
