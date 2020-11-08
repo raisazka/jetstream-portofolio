@@ -11,8 +11,9 @@ class Porto extends Component
     use WithFileUploads;
 
     public $portofolios, $portofolio_id, $title, $description, $image;
+    public $portofolio;
 
-    public $isModal = false;
+    public $isModal = false, $showModal = false;
 
     public function render()
     {
@@ -33,9 +34,19 @@ class Porto extends Component
         $this->isModal = false;
     }
 
+    //Close Modal Function
+    public function closeShowModal() {
+        $this->showModal = false;
+    }
+
     //Open Modal Function
     public function openModal() {
         $this->isModal = true;
+    }
+
+    //Open Modal Function
+    public function openShowModal() {
+        $this->showModal = true;
     }
 
     public function store() {
@@ -59,6 +70,11 @@ class Porto extends Component
 
         $this->closeModal();
         $this->resetFields();
+    }
+
+    public function show($id) {
+        $this->portofolio = Portofolio::find($id);
+        $this->openShowModal();
     }
 
 }

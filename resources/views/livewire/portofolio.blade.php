@@ -4,8 +4,13 @@
         <x-jet-button wire:click="openModal()" class="justify-center hover:bg-blue-700">Create Portofolio</x-jet-button>
    </div>
    <hr class="red-line-port">
+
    @if ($isModal)
        @include('livewire.portofolio.create')
+   @endif
+
+   @if($showModal)
+        @include('livewire.portofolio.show')
    @endif
 
    @if (session()->has('message'))
@@ -29,7 +34,7 @@
               </p>
             </div>
             <div class="px-6 pt-4 pb-2">
-              <x-jet-button style="display: block !important;" class="m-auto">View more</x-jet-button>
+              <x-jet-button wire:click="show({{$porto->id}})" style="display: block !important;" class="m-auto">View more</x-jet-button>
             </div>
         </div>
         @endforeach
