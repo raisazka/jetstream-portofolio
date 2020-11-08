@@ -1,12 +1,3 @@
-.portofolio-container {
-    margin-top: 50px;
-}
-
-.title-container {
-    display: flex;
-    justify-content: space-between;
-}
-
 .title {
     font-size: 36px;
     color: black;
