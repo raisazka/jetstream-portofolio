@@ -10,12 +10,13 @@ class Porto extends Component
 {
     use WithFileUploads;
 
-    public $portofolio_id, $title, $description, $image;
+    public $portofolios, $portofolio_id, $title, $description, $image;
 
     public $isModal = false;
 
     public function render()
     {
+        $this->portofolios = Portofolio::all();
         return view('livewire.portofolio');
     }
 
@@ -51,7 +52,7 @@ class Porto extends Component
         Portofolio::updateOrCreate(['id' => $this->portofolio_id], [
             'title' => $this->title,
             'description' => $this->description,
-            'portofolio_image' => $this->image->storePublicly('portofolio-image'),
+            'portofolio_image' => $this->image->storePublicly('portofolio-image', 'public'),
         ]);
         //Buat message untuk menampilkan sudah di update atau buat baru
         session()->flash('message', $this->portofolio_id ? $this->title . ' Diperbaharui': 'Portofolio Baru Ditambahkan');

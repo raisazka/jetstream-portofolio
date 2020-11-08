@@ -18,5 +18,22 @@
     </div>
     @endif
 
+    <div class="flex flex-wrap">
+        @foreach ($portofolios as $porto)
+        <div class="max-w-sm rounded overflow-hidden shadow-lg sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3">
+        <img class="w-full" src="{{asset('storage/'.$porto->portofolio_image)}}" alt="Sunset in the mountains">
+            <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">{{$porto->title}}</div>
+              <p class="text-gray-700 text-base">
+                {{$porto->description}}
+              </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+              <x-jet-button style="display: block !important;" class="m-auto">View more</x-jet-button>
+            </div>
+        </div>
+        @endforeach
+    </div>
     
+
 </div>
