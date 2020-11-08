@@ -2,16 +2,29 @@
 
 namespace App\Http\Livewire;
 
+use Livewire\WithFileUploads;
 use Livewire\Component;
 use App\Models\Portofolio;
 
 class Porto extends Component
 {
+    use WithFileUploads;
+
+    public $portofolio_id, $title, $description, $image;
+
     public $isModal = false;
 
     public function render()
     {
         return view('livewire.portofolio');
+    }
+
+    //FUNGSI INI UNTUK ME-RESET FIELD/KOLOM, SESUAIKAN FIELD APA SAJA YANG KAMU MILIKI
+    public function resetFields()
+    {
+        $this->title = '';
+        $this->description = '';
+        $this->image = '';
     }
 
     //Close Modal Function
@@ -22,6 +35,29 @@ class Porto extends Component
     //Open Modal Function
     public function openModal() {
         $this->isModal = true;
+    }
+
+    public function store() {
+
+        $this->validate([
+            'title' => 'required|string|min:5',
+            'description' => 'required',
+            'image' => 'required|image',
+        ]);
+        
+        //Fungsi untuk menyimpan atau mengupdate data
+        //Jika Id tersedia, maka update data
+        //Jika tidak, buat data baru
+        Portofolio::updateOrCreate(['id' => $this->portofolio_id], [
+            'title' => $this->title,
+            'description' => $this->description,
+            'portofolio_image' => $this->image->store('portofolio-image'),
+        ]);
+        //Buat message untuk menampilkan sudah di update atau buat baru
+        session()->flash('message', $this->portofolio_id ? $this->title . ' Diperbaharui': 'Portofolio Baru Ditambahkan');
+
+        $this->closeModal();
+        $this->resetFields();
     }
 
 }
