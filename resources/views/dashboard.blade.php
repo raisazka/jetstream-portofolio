@@ -1,5 +1,4 @@
 <x-app-layout>
-    <div>
-        @livewire('main')
-    </div>
+    @livewire('main')
+    @livewire('porto')
 </x-app-layout>
