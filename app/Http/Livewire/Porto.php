@@ -51,7 +51,7 @@ class Porto extends Component
         Portofolio::updateOrCreate(['id' => $this->portofolio_id], [
             'title' => $this->title,
             'description' => $this->description,
-            'portofolio_image' => $this->image->store('portofolio-image'),
+            'portofolio_image' => $this->image->storePublicly('portofolio-image'),
         ]);
         //Buat message untuk menampilkan sudah di update atau buat baru
         session()->flash('message', $this->portofolio_id ? $this->title . ' Diperbaharui': 'Portofolio Baru Ditambahkan');
