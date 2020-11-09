@@ -1,0 +1,12 @@
+.title {
+    font-size: 36px;
+    color: black;
+    font-weight: bold;
+}
+
+.red-line-port {
+    height: 5px;
+    background-color: red;
+    margin-bottom: 10px;
+    border: 1px solid red;
+}

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Portofolio extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title', 'description', 'portofolio_image'
+    ];
 }

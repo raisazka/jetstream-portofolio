@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//laravel sebelumnya
+Route::get('/portofolio', 'PortofolioController@index');
+//laravel 8
+Route::get('/portofolio', [PortofolioController::class, 'index'])->name('porto.index');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
