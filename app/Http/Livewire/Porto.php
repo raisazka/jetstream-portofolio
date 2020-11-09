@@ -44,6 +44,13 @@ class Porto extends Component
         $this->isModal = true;
     }
 
+    public function edit($id) {
+        $this->portofolio = Portofolio::find($id);
+        $this->title = $this->portofolio->title;
+        $this->description = $this->portofolio->description;
+        $this->openModal();
+    }
+
     //Open Modal Function
     public function openShowModal() {
         $this->showModal = true;
@@ -60,7 +67,7 @@ class Porto extends Component
         //Fungsi untuk menyimpan atau mengupdate data
         //Jika Id tersedia, maka update data
         //Jika tidak, buat data baru
-        Portofolio::updateOrCreate(['id' => $this->portofolio_id], [
+        Portofolio::updateOrCreate(['id' => $this->portofolio->id], [
             'title' => $this->title,
             'description' => $this->description,
             'portofolio_image' => $this->image->storePublicly('portofolio-image', 'public'),
@@ -75,6 +82,12 @@ class Porto extends Component
     public function show($id) {
         $this->portofolio = Portofolio::find($id);
         $this->openShowModal();
+    }
+
+    public function delete($id) {
+        Portofolio::destroy($id);
+        session()->flash('message', 'Sukses menghapus portofolio');
+        $this->closeShowModal();
     }
 
 }

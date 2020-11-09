@@ -34,7 +34,8 @@
               </p>
             </div>
             <div class="px-6 pt-4 pb-2">
-              <x-jet-button wire:click="show({{$porto->id}})" style="display: block !important;" class="m-auto">View more</x-jet-button>
+              <x-jet-button wire:click="show({{$porto->id}})" style="display: block !important;" class="w-full m-auto">View more</x-jet-button>
+              <x-jet-button wire:click="edit({{$porto->id}})" style="display: block !important;" class="w-full m-auto mt-2 bg-green-800">Edit</x-jet-button>
             </div>
         </div>
         @endforeach
